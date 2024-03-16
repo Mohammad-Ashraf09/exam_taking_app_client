@@ -2,6 +2,7 @@
     "name": "exam-taking-app-client",
     "private": true,
     "version": "0.0.0",
+    "proxy": "http://localhost:8000/api/",
     "type": "module",
     "scripts": {
         "dev": "vite",
@@ -10,8 +11,15 @@
         "preview": "vite preview"
     },
     "dependencies": {
+        "axios": "^1.6.7",
+        "bcryptjs": "^2.4.3",
+        "compressorjs": "^1.2.1",
+        "firebase": "^10.8.1",
+        "lodash": "^4.17.21",
         "react": "^18.2.0",
-        "react-dom": "^18.2.0"
+        "react-dom": "^18.2.0",
+        "react-router-dom": "^6.22.3",
+        "timeago.js": "^4.0.2"
     },
     "devDependencies": {
         "@types/react": "^18.2.56",
