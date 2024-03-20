@@ -344,3 +344,206 @@ input:invalid[focused="true"] ~ .error-msg{
 .adminHome-container-wrapper{
     width: 100%;
 }
+
+
+/* ````````````````````````` CreatePaper page ````````````````````````````` */
+.createPaper-container {
+    width: 100%;
+    height: calc(100vh - 46px);
+    min-height: 600px;
+    background-color: var(--bg-color-light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.createPaper-container-wrapper {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.createPaper-title-ques-number {
+    width: 100%;
+    height: 65px;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    background-color: var(--bg-color);
+    border-radius: 1rem;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.createPaper-title-ques-number-wrapper {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+}
+.header-input {
+    height: 2rem;
+    border: 2px solid var(--grey-light);
+    border-radius: 4px;
+    padding: 0 0.5rem;
+    /* font-size: 0.75rem; */
+    /* font-weight: 600; */
+    box-sizing: border-box;
+}
+.paper-title {
+    width: 60%;
+}
+.no-of-question {
+    width: 25%;
+}
+.create-paper {
+    width: 100%;
+    height: calc(100% - 160px);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+.create-paper::-webkit-scrollbar {
+    display: none;
+}
+.create-question-container {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    background-color: var(--bg-color);
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--grey-xl-light);
+    display: flex;
+}
+.submit {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    padding: 0.75rem 2.5rem;
+    border-radius: 25px;
+    color: white;
+    background-color: var(--theme-color);
+    border: none;
+    box-shadow: 5px 5px 20px var(--theme-shadow);
+    cursor: pointer;
+}
+.submit:hover {
+    transform: scale(1.02);
+}
+.disable-btn {
+    background-color: var(--grey-light);
+    cursor: not-allowed;
+    box-shadow: none;
+}
+.disable-btn:hover {
+    transform: none;
+}
+.create-question-left {
+    width: 60px;
+    height: 100%;
+    font-size: 1.125rem;
+    font-weight: 600;
+}
+.create-question-right {
+    width: 40px;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.create-question-middle {
+    width: calc(100% - 80px);
+    height: 100%;
+}
+.question-input {
+    margin-bottom: 1.25rem;
+    position: relative;
+}
+.question-textarea {
+    box-sizing: border-box;
+    width: 100% !important;
+    padding: 4px 8px 16px 8px;
+    margin-bottom: 0.5rem;
+    background-color: rgb(249, 247, 230);
+    border: 2px solid rgb(189, 184, 184);
+    border-radius: 4px;
+    font-weight: 400;
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+.question-textarea::-webkit-scrollbar{
+    display: none;
+}
+.option-input {
+    display: flex;
+    position: relative;
+}
+.option-name {
+    margin-right: 1rem;
+}
+.previewImage {
+    height: 48px;
+    width: 48px;
+    border-radius: 4px;
+    object-fit: cover;
+    position: absolute;
+    right: -51px;
+}
+.questionPreviewImage {
+    bottom: 2px;
+}
+.optionPreviewImage {
+    bottom: 10px;
+}
+.textarea-icons {
+    position: absolute;
+    bottom: 0.2rem;
+    right: 0.4rem;
+    background-color: rgb(249, 247, 230);
+}
+.option-textarea-icons {
+    bottom: 0.7rem;
+}
+.icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 13px;
+    width: 20px;
+    height: 20px;
+    border-radius: 2px;
+}
+.icons:hover {
+    background-color: var(--theme-color);
+    color: white;
+    transition: 0.4s ease;
+}
+.correct-option-and-checkbox {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.correct-option {
+    margin-left: 1.875rem;
+}
+.question-checkbox {
+    font-size: 12px;
+}
+.question-checkbox-input {
+    height: 12px;
+    width: 12px;
+}
+.fa-pen-to-square {
+    color: var(--theme-color);
+    cursor: pointer;
+}
+.fa-pen-to-square:hover {
+    transform: scale(1.1);
+}
+.ql-tooltip {           /* dynamic class for quill tooltip popup*/
+    z-index: 9999999;
+    background-color: var(--theme-color) !important;
+    color: white !important;
+}
