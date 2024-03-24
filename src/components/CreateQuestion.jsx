@@ -1,6 +1,10 @@
+import { useState } from "react";
 import Option from "./Option";
 
-const CreateQuestion = ({ qNumber, formData, setFormData, setImages, editHandler }) => {
+const CreateQuestion = (prop) => {
+    const { qNumber, formData, setFormData, setImages, editHandler } = prop;
+
+    const [focused, setFocused] = useState(false);
     const onChangeHandler = (e, type) => {
         if (type === 'correctOption') {
             setFormData({...formData, questionNo: qNumber, correctOption: e.target.value});
@@ -48,15 +52,20 @@ const CreateQuestion = ({ qNumber, formData, setFormData, setImages, editHandler
 
                 <div className="correct-option-and-checkbox">
                     {/* correct option input */}
-                    <input
-                        type="text"
-                        className="header-input correct-option"
-                        name='correctOption'
-                        placeholder='Correct Option (a,b,c,d)'
-                        pattern="^[a-d]{1,1}$"
-                        required
-                        onChange={(e)=>onChangeHandler(e, 'correctOption')}
-                    />
+                    <div className="correct-option-div">
+                        <input
+                            className="header-input correct-option"
+                            type='text'
+                            name='correctOption'
+                            placeholder='Correct Option (a,b,c,d)'
+                            pattern='^[a-d]{1,1}$'
+                            required
+                            onChange={(e)=>onChangeHandler(e, 'correctOption')}
+                            onBlur={()=>setFocused(true)}
+                            focused={focused.toString()}
+                        />
+                        <div className='error-msg correct-option-error-msg'>invalid option</div>
+                    </div>
                     {/* sub-title input */}
                     <input
                         type="text"

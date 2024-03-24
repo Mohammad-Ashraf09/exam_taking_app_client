@@ -550,9 +550,19 @@ input:invalid[focused="true"] ~ .error-msg{
 .correct-option-and-checkbox {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+}
+.correct-option-div {
+    display: flex;
+    flex-direction: column;
+}
+.correct-option:invalid[focused="true"]{
+    border: 2px solid red;
 }
 .correct-option {
+    margin-left: 1.875rem;
+}
+.correct-option-error-msg{
+    margin: 0;
     margin-left: 1.875rem;
 }
 .question-checkbox {
@@ -576,7 +586,7 @@ input:invalid[focused="true"] ~ .error-msg{
 }
 
 
-/* ````````````````````````` Teat paper list page ````````````````````````````` */
+/* ````````````````````````` Test paper list page ````````````````````````````` */
 .test-papers-list-container {
     width: 100%;
     height: calc(100vh - 46px);
@@ -645,7 +655,7 @@ input:invalid[focused="true"] ~ .error-msg{
 .test-papers-list::-webkit-scrollbar {
     display: none;
 }
-.test-paper-row {
+.test-paper-row-delete {
     width: 100%;
     height: 35px;
     font-size: 13px;
@@ -656,20 +666,28 @@ input:invalid[focused="true"] ~ .error-msg{
     align-items: center;
     transition: 0.2s ease;
 }
+.test-paper-row {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
 .test-name {
     font-weight: 600;
 }
 .other {
     color: var(--grey-light);
 }
-.test-paper-row:hover {
+.test-paper-row-delete:hover {
     background-color: var(--bg-color-dark-2);
+    color: white;
+}
+.test-paper-row:hover > .test-name {
     color: white;
 }
 .test-paper-row:hover > .other {
     color: white;
 }
-.test-paper-row:hover > .sub-heading-delete {
+.test-paper-row-delete:hover > .sub-heading-delete {
     color: white;
 }
 .create-new-btn-container {
@@ -681,4 +699,107 @@ input:invalid[focused="true"] ~ .error-msg{
 }
 .create-new-btn {
     margin: 0;
+}
+
+
+/* ````````````````````````` Particular Test paper page ````````````````````````````` */
+.test-paper-container {
+    width: 100%;
+    height: calc(100vh - 46px);
+    min-height: 600px;
+    background-color: var(--bg-color-light);
+    display: flex;
+    justify-content: center;
+}
+.test-paper-container-wrapper {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+.paper-heading {
+    display: flex;
+    justify-content: flex-start;
+    align-items: end;
+    padding-left: 0.5rem;
+}
+.questions-div {
+    overflow: auto;
+}
+.questions-div::-webkit-scrollbar {
+    display: none;
+}
+.question-container {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    padding: 1rem;
+    padding-bottom: 0rem;
+}
+.question-number {
+    width: 60px;
+    font-size: 18px;
+    font-weight: 600;
+}
+.question {
+    width: calc(100% - 60px);
+}
+.question p {
+    margin: 0;
+}
+.question-text {
+    margin-bottom: 1rem;
+    font-family: 'Times New Roman', Times, serif;
+}
+.question-image {
+    max-width:100%;
+    max-height:120px;
+    width: auto;
+    height: auto;
+    border-radius: 4px;
+    object-fit: cover;
+}
+.options {
+    margin-top: 0.5rem;
+}
+.options-in-a-row {
+    width: 100%;
+    display: flex;
+    margin-bottom: 1rem;
+}
+.option-image-container {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 0.5rem;
+}
+.option-image {
+    margin-left: 1rem;
+    max-width:100%;
+    max-height:90px;
+    width: auto;
+    height: auto;
+    border-radius: 4px;
+    object-fit: cover;
+}
+.option {
+    display: flex;
+    width: 50%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.option p{
+    margin-left: 0.5rem;
+}
+.correct-option-container {
+    width: 90%;
+    box-sizing: border-box;
+    text-align: end;
+    padding-right: 0.5rem;
+    margin-bottom: -8px;
+    font-size: 13px;
+}
+hr {
+    width: 90%;
+    border: 1px solid var(--bg-color-dark-1);
+    margin-bottom: 1.5rem;
 }

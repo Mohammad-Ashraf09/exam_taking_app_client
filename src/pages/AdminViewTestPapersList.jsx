@@ -7,12 +7,12 @@ import TestPaperList from "../components/TestPaperList";
 const AdminViewTestPapersList = () => {
     const [papers, setPapers] = useState([]);
 
-    const handleDetelePaper = async(id) => {
+    const deletePaperHandler = async(id) => {
         const isDelete = window.confirm('Are you sure...you want delete this paper');
         if (isDelete) {
             try{
                 // await axios.delete(`${REACT_APP_BASE_URL}/papers/${id}`);
-                await axios.delete(`http://localhost:8000/api/papers/${id}`);
+                await axios.delete(`http://localhost:8000/api/papers/${id}/delete`);
                 setPapers((prev)=> prev.filter((item)=> item?._id !== id))
             }catch(err){
                 console.log(err);
@@ -20,12 +20,12 @@ const AdminViewTestPapersList = () => {
         }
     }
 
-    useEffect(() => {
+    useEffect(() => {    // 2 baar call ho rahi hai api
             const fetchPapersList = async() => {
                 try{
                     // await axios.get(`${REACT_APP_BASE_URL}/papers`);
-                    const res = await axios.get("http://localhost:8000/api/papers");
-                    console.log('data----', res?.data)
+                    const res = await axios.get("http://localhost:8000/api/papers/list");
+                    // console.log('data----', res?.data)
                     setPapers(res?.data)
                 }catch(err){
                     console.log(err);
@@ -52,7 +52,7 @@ const AdminViewTestPapersList = () => {
 
                         <div className="test-papers-list">
                             {papers?.map((paper)=>(
-                                <TestPaperList key={paper?.id} paper={paper} handleDetelePaper={handleDetelePaper}/>
+                                <TestPaperList key={paper?.id} paper={paper} deletePaperHandler={deletePaperHandler}/>
                             ))}
                         </div>
 
