@@ -44,9 +44,9 @@ const AdminViewTestPapersList = () => {
                     <div className="test-papers-list-table">
                         <div className="test-papers-list-sub-heading">
                             <p className="sub-heading sub-heading-test-name"> Test Name</p>
-                            <p className="sub-heading sub-heading-create-date"> Crete Date </p>
-                            <p className="sub-heading sub-heading-live-date"> Live Date </p>
-                            <p className="sub-heading sub-heading-active"> Active </p>
+                            <p className="sub-heading"> Crete Date </p>
+                            <p className="sub-heading"> Live Date </p>
+                            <p className="sub-heading"> No. of Questions </p>
                             <p className="sub-heading sub-heading-delete"></p>
                         </div>
 
