@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
-import TestPaperList from "../components/TestPaperList";
+import TestPapersTable from "../components/TestPapersTable";
 
 const AdminViewTestPapersList = () => {
     const [papers, setPapers] = useState([]);
@@ -40,24 +40,11 @@ const AdminViewTestPapersList = () => {
             <div className="test-papers-list-container">
                 <div className="test-papers-list-container-wrapper">
                     <h2 className="test-papers-list-heading"> Test Papers List </h2>
-
-                    <div className="test-papers-list-table">
-                        <div className="test-papers-list-sub-heading">
-                            <p className="sub-heading sub-heading-test-name"> Test Name</p>
-                            <p className="sub-heading"> Crete Date </p>
-                            <p className="sub-heading"> Live Date </p>
-                            <p className="sub-heading"> No. of Questions </p>
-                            <p className="sub-heading sub-heading-delete"></p>
-                        </div>
-
-                        <div className="test-papers-list">
-                            {papers?.map((paper)=>(
-                                <TestPaperList key={paper?.id} paper={paper} deletePaperHandler={deletePaperHandler}/>
-                            ))}
-                        </div>
-
-                    </div>
-
+                    <TestPapersTable
+                        papers={papers}
+                        deletePaperHandler={deletePaperHandler}
+                        isAdmin={true}
+                    />
                     <Link to='/createPaper' className="create-new-btn-container" style={{textDecoration: 'none'}}>
                         <button className='signin-btn create-new-btn'> Create New </button>
                     </Link>

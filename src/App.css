@@ -644,6 +644,10 @@ input:invalid[focused="true"] ~ .error-msg{
     width: 5%;
     color: var(--bg-color-dark-4);
 }
+.tick-mark {
+    font-size: 20px;
+    color: rgb(6, 157, 6);
+}
 .test-papers-list {
     width: 98%;
     height: calc(100% - 50px);

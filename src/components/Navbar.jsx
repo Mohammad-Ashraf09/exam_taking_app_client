@@ -1,16 +1,11 @@
 import { useContext } from "react";
-// import axios from 'axios';
-// import { useContext, useEffect, useState } from 'react';
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { AuthContext } from '../context/AuthContext';
 // import { REACT_APP_BASE_URL } from '../config/keys';
 
 
-const Navbar = () => {
-    // const location = useLocation();
+const Navbar = ({ isRunningTest }) => {
     const { user } = useContext(AuthContext);
-    // const {user:currentUser} = useContext(AuthContext);
-    // const dp = user?.profilePicture?.includes('https://') ? user?.profilePicture : `/assets/${user?.profilePicture}`;
 
     const logoutHandler = () =>{
         const logout = window.confirm("Are you sure, you want to logout?");
@@ -28,22 +23,27 @@ const Navbar = () => {
             <div className="logo-text">Hell<span style={{color: 'black'}}>o...</span></div>
         </div>
 
-        {/* {!['/', '/loginOption', '/studentLogin', '/adminLogin', '/studentSignup', '/adminSignup'].includes(location?.pathname) ? */}
         {user ?
             <div className="navbar-right">
-                <div className="navbar-right-item">
-                    <NavLink to='/' className={({isActive}) => `${isActive ? 'active' : 'inactive'}`}>
-                        <div className="nav"> Dashboard </div>
-                    </NavLink>
-                </div>
+                {user?.isAdmin ? (
+                    <div className="navbar-right-item">
+                        <NavLink to='/' className={({isActive}) => `${isActive ? 'active' : 'inactive'}`}>
+                            <div className="nav"> Dashboard </div>
+                        </NavLink>
+                    </div>
+                ) : null}
 
-                {/* <div className="navbar-right-item">
-                    <div className="nav timer"> Timer </div>
-                </div>
+                {(!user?.isAdmin && isRunningTest) ? (
+                    <>
+                        <div className="navbar-right-item">
+                            <div className="nav timer"> Timer </div>
+                        </div>
 
-                <div className="navbar-right-item">
-                    <div className="nav attempt"> Attempts: 5 <s/div>
-                </div> */}
+                        <div className="navbar-right-item">
+                            <div className="nav attempt"> Attempts: 5 </div>
+                        </div>
+                    </>
+                ) : null }
 
                 <div className="navbar-right-item user-dp-name">
                     {user?.isAdmin ?
