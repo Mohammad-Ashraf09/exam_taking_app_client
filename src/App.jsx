@@ -17,6 +17,7 @@ import AdminViewParticularTestPaper from "./pages/AdminViewParticularTestPaper.j
 import TestOverview from "./pages/TestOverview.jsx";
 import Instruction from "./pages/Instruction.jsx";
 import StudentViewRunningTestPaper from "./pages/StudentViewRunningTestPaper.jsx";
+import ThankYou from "./pages/ThankYou.jsx";
 
 function App() {
     const {user} = useContext(AuthContext);
@@ -39,6 +40,7 @@ function App() {
                 <Route path='/paper/:id/overview' element={ !user?.isAdmin ? <TestOverview/> : <Navigate to="/" />}/>
                 <Route path='/paper/:id/instruction' element={ !user?.isAdmin ? <Instruction/> : <Navigate to="/" />}/>
                 <Route path='/paper/:id/running-exam' element={ !user?.isAdmin ? <StudentViewRunningTestPaper/> : <Navigate to="/" />}/>
+                <Route path='/paper/:id/thank-you' element={ !user?.isAdmin ? <ThankYou/> : <Navigate to="/" />}/>
                 {/* make error page for not exist routes and create route for that */}
             </Routes>
         </BrowserRouter>

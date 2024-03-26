@@ -51,20 +51,20 @@ const AdminViewParticularTestPaper = () => {
 
                     <div className="test-papers-list-table questions-div">
                         {paper?.questions?.map((q)=>(
-                            <>
+                            <div key={q?.questionNo} style={{width: '100%'}}>
                                 <div className="question-container">
                                     <div className="question-number"> Q. {q?.questionNo}</div>
                                     <div className="question">
                                         <div className="question-text"><Markdown>{q?.question?.text}</Markdown></div>
                                         {q?.question?.image ? <img src={q?.question?.image} className="question-image"></img> : null}
-                                        <AdminViewOptions q={q}/>
+                                        <AdminViewOptions option={q?.option}/>
                                     </div>
                                 </div>
                                 <div className="correct-option-container">
                                     <div >correct option : <span style={{fontWeight: 'bold', color: 'rgb(192, 64, 0)'}}>{q?.correctOption}</span></div>
                                 </div>
                                 <hr />
-                            </>
+                            </div>
                         ))}
                     </div>
                     <div className="create-new-btn-container">

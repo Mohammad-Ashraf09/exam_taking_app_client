@@ -43,7 +43,7 @@ const StudentHome = () => {
             papers?.map((paper) => {
                 const obj = find(userData?.attemptedPapers, {'paperId': paper?._id});
                 if (obj) {
-                    const updatedPaper = {...paper, attemptedDate: obj?.attemptedDate};
+                    const updatedPaper = {...paper, attemptedAt: obj?.attemptedAt};
                     setUpdatedPapers((prev) => [...prev, updatedPaper]);
                 } else {
                     setUpdatedPapers((prev) => [...prev, paper]);
