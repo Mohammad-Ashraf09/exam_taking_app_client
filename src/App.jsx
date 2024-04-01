@@ -18,6 +18,7 @@ import TestOverview from "./pages/TestOverview.jsx";
 import Instruction from "./pages/Instruction.jsx";
 import StudentViewRunningTestPaper from "./pages/StudentViewRunningTestPaper.jsx";
 import ThankYou from "./pages/ThankYou.jsx";
+import StudentViewDoneTestPaper from "./pages/StudentViewDoneTestPaper.jsx";
 
 function App() {
     const {user} = useContext(AuthContext);
@@ -37,10 +38,11 @@ function App() {
                 <Route path='/studentList' element={ user?.isAdmin ? <AdminViewStudentsList/> : <Navigate to="/" />}/>
                 <Route path='/createPaper' element={ user?.isAdmin ? <CreatePaper/> : <Navigate to="/" />}/>
 
-                <Route path='/paper/:id/overview' element={ !user?.isAdmin ? <TestOverview/> : <Navigate to="/" />}/>
-                <Route path='/paper/:id/instruction' element={ !user?.isAdmin ? <Instruction/> : <Navigate to="/" />}/>
-                <Route path='/paper/:id/running-exam' element={ !user?.isAdmin ? <StudentViewRunningTestPaper/> : <Navigate to="/" />}/>
-                <Route path='/paper/:id/thank-you' element={ !user?.isAdmin ? <ThankYou/> : <Navigate to="/" />}/>
+                <Route path='/paper/:id/instruction' element={ (user && !user?.isAdmin) ? <Instruction/> : <Navigate to="/" />}/>
+                <Route path='/paper/:id/running-exam' element={ (user && !user?.isAdmin) ? <StudentViewRunningTestPaper/> : <Navigate to="/" />}/>
+                <Route path='/paper/:id/thank-you' element={ (user && !user?.isAdmin) ? <ThankYou/> : <Navigate to="/" />}/>
+                <Route path='/paper/:id/overview' element={ (user && !user?.isAdmin) ? <TestOverview/> : <Navigate to="/" />}/>
+                <Route path='/paper/:id/overview/responses' element={ (user && !user?.isAdmin) ? <StudentViewDoneTestPaper/> : <Navigate to="/" />}/>
                 {/* make error page for not exist routes and create route for that */}
             </Routes>
         </BrowserRouter>

@@ -340,6 +340,14 @@ input:invalid[focused="true"] ~ .error-msg{
     align-items: center;
     height: 100%;
 }
+.timer, .attempt {
+    cursor: default;
+}
+.timer {
+    color: var(--button-color);
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 .active {
     text-decoration: none;
     color: var(--bg-color-dark-3);
@@ -936,4 +944,11 @@ svg {
     font-weight: 600;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     color: var(--bg-color-dark-4);
+}
+
+.wrong-ans {
+    color: red;
+}
+.wrong-ans-image {
+    border: 2px solid red;
 }

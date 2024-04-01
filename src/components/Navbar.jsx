@@ -1,11 +1,13 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from '../context/AuthContext';
+import Timer from "./Timer";
 // import { REACT_APP_BASE_URL } from '../config/keys';
 
 
-const Navbar = ({ isRunningTest }) => {
+const Navbar = ({ isRunningTest, selectedOptions, submitExamHandler }) => {
     const { user } = useContext(AuthContext);
+    const [attemptedQuestion, setAttemptedQuestion] = useState(0);
 
     const logoutHandler = () =>{
         const logout = window.confirm("Are you sure, you want to logout?");
@@ -14,6 +16,14 @@ const Navbar = ({ isRunningTest }) => {
             window.location.href='/'
         }
     }
+
+    useEffect(() => {
+        let count = 0;
+        selectedOptions?.map((item)=>{
+            if (item) count++;
+        });
+        setAttemptedQuestion(count);
+    }, [selectedOptions]);
 
   return (
     <div className='navbar-container'>
@@ -36,11 +46,16 @@ const Navbar = ({ isRunningTest }) => {
                 {(!user?.isAdmin && isRunningTest) ? (
                     <>
                         <div className="navbar-right-item">
-                            <div className="nav timer"> Timer </div>
+                            <div className="nav timer">
+                                <Timer submitExamHandler={submitExamHandler}/>
+                            </div>
                         </div>
 
                         <div className="navbar-right-item">
-                            <div className="nav attempt"> Attempts: 5 </div>
+                            <div className="nav attempt">
+                                Attempts:&nbsp;
+                                <span className="timer">{attemptedQuestion}</span>
+                            </div>
                         </div>
                     </>
                 ) : null }

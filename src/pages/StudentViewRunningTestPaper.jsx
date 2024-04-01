@@ -19,8 +19,8 @@ const StudentViewRunningTestPaper = () => {
         setSelectedOptions(newSelectedOptions);
     };
 
-    const submitExamHandler = async() => {
-        const isSubmit = window.confirm('Are you sure, you want to Submit Exam')
+    const submitExamHandler = async(isTimesUp) => {
+        const isSubmit = !isTimesUp ? window.confirm('Are you sure, you want to Submit Exam') : true;
 
         if (isSubmit) {
             const data = {
@@ -55,7 +55,7 @@ const StudentViewRunningTestPaper = () => {
 
     return (
         <>
-            <Navbar isRunningTest={true} />
+            <Navbar isRunningTest={true} selectedOptions={selectedOptions} submitExamHandler={submitExamHandler}/>
             <div className="test-paper-container">
                 <div className="test-paper-container-wrapper">
                     <h2 className="test-papers-list-heading paper-heading"> {paper?.paperTitle} </h2>
@@ -87,7 +87,7 @@ const StudentViewRunningTestPaper = () => {
                         ))}
                     </div>
                     <div className="create-new-btn-container">
-                        <button className='signin-btn create-new-btn' onClick={submitExamHandler}> Submit </button>
+                        <button className='signin-btn create-new-btn' onClick={()=>submitExamHandler(false)}> Submit </button>
                     </div>
                 </div>
             </div>

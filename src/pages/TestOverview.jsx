@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../components/Navbar";
 import { AuthContext } from "../context/AuthContext";
@@ -93,7 +93,6 @@ const TestOverview = () => {
             correctOptions?.length === responses?.length
         ) {
             // for attempted count
-            console.log({correctOptions, responses});
             const phy = {
                 mandatory: responses.slice(0, 2),  // this need to be change 0 to 35 later
                 optional: responses.slice(2, 4),   // this need to be change 35 to 50 later
@@ -110,7 +109,6 @@ const TestOverview = () => {
                 mandatory: responses.slice(12, 14),
                 optional: responses.slice(14, 16)
             };
-            console.log('attempted---------',{phy, chem, bot, zoo})
 
             let mandatoryCount = 0;
             let optionalCount = 0;
@@ -201,7 +199,6 @@ const TestOverview = () => {
                 mandatory: correctOptions.slice(12, 14),
                 optional: correctOptions.slice(14, 16)
             };
-            console.log('correct------------',{phyCorr, chemCorr, botCorr, zooCorr})
 
             let attempted = 0;
             phy.mandatory.map((res, i) => {
@@ -366,9 +363,11 @@ const TestOverview = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="create-new-btn-container">
-                        <button className='signin-btn create-new-btn'> View Paper </button>
-                    </div>
+                    <Link to={`/paper/${paperId}/overview/responses`} style={{textDecoration: 'none'}}>
+                        <div className="create-new-btn-container">
+                            <button className='signin-btn create-new-btn'> View Paper </button>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </>
