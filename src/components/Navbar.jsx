@@ -5,7 +5,7 @@ import Timer from "./Timer";
 // import { REACT_APP_BASE_URL } from '../config/keys';
 
 
-const Navbar = ({ isRunningTest, selectedOptions, submitExamHandler }) => {
+const Navbar = ({ isRunningTest, selectedOptions, submitExamHandler, timeAllotted }) => {
     const { user } = useContext(AuthContext);
     const [attemptedQuestion, setAttemptedQuestion] = useState(0);
 
@@ -47,7 +47,7 @@ const Navbar = ({ isRunningTest, selectedOptions, submitExamHandler }) => {
                     <>
                         <div className="navbar-right-item">
                             <div className="nav timer">
-                                <Timer submitExamHandler={submitExamHandler}/>
+                                <Timer submitExamHandler={submitExamHandler} timeAllotted={timeAllotted}/>
                             </div>
                         </div>
 

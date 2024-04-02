@@ -55,7 +55,12 @@ const StudentViewRunningTestPaper = () => {
 
     return (
         <>
-            <Navbar isRunningTest={true} selectedOptions={selectedOptions} submitExamHandler={submitExamHandler}/>
+            <Navbar
+                isRunningTest={true}
+                selectedOptions={selectedOptions}
+                submitExamHandler={submitExamHandler}
+                timeAllotted={paper?.timeAllotted}
+            />
             <div className="test-paper-container">
                 <div className="test-paper-container-wrapper">
                     <h2 className="test-papers-list-heading paper-heading"> {paper?.paperTitle} </h2>

@@ -12,6 +12,7 @@ const CreatePaper = () => {
     const navigate = useNavigate();
     const scrollRef = useRef();
     const [paperTitle, setPaperTitle] = useState('');
+    const [timeAllotted, setTimeAllotted] = useState(0);
     const [noOfQuestions, setNoOfQuestion] = useState(1);
     const [count, setCount] = useState(1);
     const [formArray, setFormArray] = useState([]);
@@ -118,7 +119,6 @@ const CreatePaper = () => {
                     {dText: formData?.d ? formData?.d : '', dImage: find(imageUrls, 'DImage') ? find(imageUrls, 'DImage')['DImage'] : ''},
                 ],
                 correctOption: formData?.correctOption,
-                subTitle: formData?.subTitle,
             }
 
             setFormArray((prev)=>[...prev, formObj]);
@@ -135,7 +135,7 @@ const CreatePaper = () => {
 
     useEffect(() => {  // this useEffect is for final submission
         if (formArray?.length === noOfQuestions) {
-            const finalData = {paperTitle, totalQuestion: noOfQuestions, questions: formArray};
+            const finalData = {paperTitle, totalQuestion: noOfQuestions, timeAllotted, questions: formArray};
             const savePaperToDB = async() => {
                 try{
                     console.log('on submit-------',finalData)
@@ -161,24 +161,37 @@ const CreatePaper = () => {
                 <div className="createPaper-container-wrapper">
                     <div className="createPaper-title-ques-number">
                         <div className="createPaper-title-ques-number-wrapper">
-                            <input
-                                type="text"
-                                className="header-input paper-title"
-                                name='paperTitle'
-                                placeholder='Title'
-                                required
-                                onBlur={(e)=>setPaperTitle(e.target.value)}
-                            />
-                            <input
-                                type="number"
-                                className="header-input no-of-question"
-                                name='noOfQuestion'
-                                placeholder='Number of Ques.'
-                                // value={noOfQuestions}      // it only work and can be editable input field when we take onChange
-                                defaultValue={noOfQuestions}  // it works even with onBlur
-                                required
-                                onBlur={(e)=>setNoOfQuestion(parseInt(e.target.value))}
-                            />
+                            <div className="paper-title-div">
+                                <input
+                                    type="text"
+                                    className="header-input paper-title"
+                                    name='paperTitle'
+                                    placeholder='Title'
+                                    required
+                                    onBlur={(e)=>setPaperTitle(e.target.value)}
+                                />
+                            </div>
+                            <div className="timer-noOfQues-div">
+                                <input
+                                    type="number"
+                                    className="header-input no-of-question time-allotted"
+                                    name='timeAllotted'
+                                    placeholder='Time (in sec.)'
+                                    // defaultValue={noOfQuestions}
+                                    required
+                                    onBlur={(e)=>setTimeAllotted(parseInt(e.target.value))}
+                                />
+                                <input
+                                    type="number"
+                                    className="header-input no-of-question"
+                                    name='noOfQuestion'
+                                    placeholder='No of Ques.'
+                                    // value={noOfQuestions}      // it only work and can be editable input field when we take onChange
+                                    defaultValue={noOfQuestions}  // it works even with onBlur
+                                    required
+                                    onBlur={(e)=>setNoOfQuestion(parseInt(e.target.value))}
+                                />
+                            </div>
                         </div>
                     </div>
 

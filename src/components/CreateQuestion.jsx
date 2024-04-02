@@ -5,12 +5,8 @@ const CreateQuestion = (prop) => {
     const { qNumber, formData, setFormData, setImages, editHandler } = prop;
 
     const [focused, setFocused] = useState(false);
-    const onChangeHandler = (e, type) => {
-        if (type === 'correctOption') {
-            setFormData({...formData, questionNo: qNumber, correctOption: e.target.value});
-        } else {
-            setFormData({...formData, questionNo: qNumber, subTitle: e.target.value});
-        }
+    const onChangeHandler = (e) => {
+        setFormData({...formData, questionNo: qNumber, correctOption: e.target.value});
     }
 
     const onCheckboxClick = (e) => {
@@ -60,21 +56,12 @@ const CreateQuestion = (prop) => {
                             placeholder='Correct Option (a,b,c,d)'
                             pattern='^[a-d]{1,1}$'
                             required
-                            onChange={(e)=>onChangeHandler(e, 'correctOption')}
+                            onChange={onChangeHandler}
                             onBlur={()=>setFocused(true)}
                             focused={focused.toString()}
                         />
                         <div className='error-msg correct-option-error-msg'>invalid option</div>
                     </div>
-                    {/* sub-title input */}
-                    <input
-                        type="text"
-                        className="header-input correct-option"
-                        name='subTitle'
-                        placeholder='Sub-title'
-                        required
-                        onBlur={(e)=>onChangeHandler(e, 'subTitle')}
-                    />
                     {/* checkbox */}
                     <div className="checkbox question-checkbox">
                         <input

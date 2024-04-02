@@ -1,8 +1,14 @@
 import { useState, useEffect } from 'react';
 
-const Timer = ({ submitExamHandler }) => {
-    const [seconds, setSeconds] = useState(10); // in seconds
+const Timer = ({ submitExamHandler, timeAllotted }) => {
+    const [seconds, setSeconds] = useState(timeAllotted || 9900); // in seconds
     const [isCallSubmitHandler, setIsCallSubmitHandler] = useState(false);
+
+    useEffect(() => {
+        if (timeAllotted) {
+            setSeconds(timeAllotted);
+        }
+    }, [timeAllotted]);
 
     useEffect(() => {
         const interval = setInterval(() => {

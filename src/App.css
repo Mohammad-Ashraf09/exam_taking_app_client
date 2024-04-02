@@ -426,11 +426,22 @@ input:invalid[focused="true"] ~ .error-msg{
     padding: 0 0.5rem;
     box-sizing: border-box;
 }
-.paper-title {
+.paper-title-div {
     width: 60%;
 }
+.timer-noOfQues-div {
+    width: 40%;
+    display: flex;
+    justify-content: flex-end;
+}
+.paper-title {
+    width: 80%;
+}
 .no-of-question {
-    width: 25%;
+    width: 40%;
+}
+.time-allotted {
+    margin-right: 1rem;
 }
 .create-paper {
     width: 100%;
