@@ -51,6 +51,7 @@ body {
     min-height: 600px;
     background-color: var(--bg-color-light);
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
 }
@@ -60,6 +61,7 @@ body {
     font-size: 2rem;
     font-weight: 600;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
 }
@@ -290,7 +292,7 @@ input:invalid[focused="true"] ~ .error-msg{
 }
 
 
-/* ````````````````````````` Navbar page ````````````````````````````` */
+/* ````````````````````````` Navbar ````````````````````````````` */
 .navbar-container {
     height: 46px;
     width: 100%;
@@ -315,12 +317,15 @@ input:invalid[focused="true"] ~ .error-msg{
     height: 36px;
     width: 36px;
 }
-.logo-text {
-    font-size: 20px;
+.logo-text-first {
+    font-size: 16px;
     margin-left: 5px;
     font-weight: bold;
     cursor: default;
-    color: var(--bg-color-dark-3);
+}
+.logo-text-second {
+    font-size: 24px;
+    color: var(--button-color);
 }
 .navbar-right {
     display: flex;
@@ -863,6 +868,7 @@ hr {
 /* ````````````````````````` Exam page ````````````````````````````` */
 .option-radio-button {
     height: 12px;
+    margin-left: 0;
 }
 .remove-response {
     margin-bottom: -4px;
@@ -881,6 +887,7 @@ hr {
     justify-content: center;
 }
 .thank-you-text {
+    text-align: center;
     font-size: 2rem;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
@@ -933,6 +940,7 @@ svg {
     width: 100%;
     height: 30%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
 }
@@ -962,4 +970,374 @@ svg {
 }
 .wrong-ans-image {
     border: 2px solid red;
+}
+
+
+/*------------------------ meadia querry for opto 429px ----------------------*/
+@media only screen and (max-width: 430px) {
+    body{
+        margin: 0;
+    }
+
+    .submit {
+        font-size: 14px;
+        padding: 0.5rem 1.5rem;
+    }
+
+    /* ````````````````````````` LoginOption page ````````````````````````````` */
+    .loginOption-container-wrapper {
+        width: 100%;
+        font-size: 1.5rem;
+        font-weight: 600;
+    }
+    .loginOption {
+        height: 200px;
+        width: 200px;
+        border-radius: 0.75rem;
+    }
+
+    /* ````````````````````````` Login page ````````````````````````````` */
+    .login-container-wrapper {
+        height: 300px;
+        width: 90%;
+        border-radius: 0.75rem;
+    }
+    .signin-text {
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .input-section {
+        width: 90%;
+    }
+    .invalid-credential {
+        margin-bottom: 1rem;
+        font-size: 12px;
+    }
+    .checkbox-input {
+        height: 13px;
+        width: 13px;
+    }
+    .signin-btn {
+        margin-top: 1.5rem;
+        padding: 0.5rem 1.5rem;
+    }
+
+    /* ````````````````````````` Signup page ````````````````````````````` */
+    .signup-container-wrapper {
+        height: 580px;
+        width: 90%;
+        border-radius: 0.75rem;
+    }
+    .heading {
+        margin-bottom: 1rem;
+    }
+    .upload-dp-section {
+        height: 25%;
+    }
+    .profile-picture {
+        height: 120px;
+        width: 120px;
+    }
+    .dp-controls {
+        width: 50%;
+    }
+    .input-section {
+        width: 90%;
+    }
+
+    /* ````````````````````````` Navbar ````````````````````````````` */
+    .logo-img {
+        display: none;
+    }
+    .logo-text-first {
+        font-size: 14px;
+        margin-left: 0;
+    }
+    .logo-text-second {
+        font-size: 20px;
+    }
+    .navbar-right-item {
+        margin-right: 0.5rem;
+    }
+    .timer {
+        font-size: 14px;
+    }
+    .navbar-img {
+        height: 28px;
+        width: 28px;
+    }
+    .logout {
+        font-size: 10px;
+        padding: 6px 12px;
+        border-radius: 4px;
+    }
+
+    /* ````````````````````````` Test paper list page ````````````````````````````` */
+    .test-papers-list-container-wrapper {
+        width: 98%;
+    }
+    .test-papers-list-heading {
+        font-size: 16px;
+        height: 40px;
+    }
+    .test-papers-list-table {
+        height: calc(100% - 46px);
+        border-radius: 6px;
+    }
+    .test-papers-list-sub-heading {
+        width: 98%;
+        height: 36px;
+        margin-top: 4px;
+        border-radius: 4px;
+        font-size: 13px;
+    }
+    .sub-heading {
+        width: 22%;
+    }
+    .sub-heading-test-name {
+        width: 29%;
+        padding-left: 4px;
+    }
+    .sub-heading-ques {
+        text-align: center;
+    }
+    .sub-heading-delete {
+        width: 5%;
+    }
+    .tick-mark {
+        font-size: 14px;
+    }
+    .test-papers-list {
+        width: 97%;
+    }
+    .test-paper-row-delete {
+        font-size: 12px;
+        height: 28px;
+    }
+    .test-name {
+        width: 30%;
+    }
+    .other {
+        width: 23%;
+        font-size: 11px;
+    }
+    .no-of-ques {
+        text-align: center;
+    }
+    .create-new-btn-container {
+        height: 50px;
+    }
+    .create-new-btn {
+        margin: 0;
+    }
+
+    /* ````````````````````````` Instruction page ````````````````````````````` */
+    .instruction-wrapper {
+        width: 96%;
+    }
+    .imp-instruction {
+        margin: 0.5rem;
+    }
+    .instruction-container {
+        font-size: 13px;
+        margin: 0rem;
+        margin-right: 0.5rem;
+    }
+    .instruction-list{
+        margin-bottom: 0.5rem;
+        margin-left: -0.5rem;
+    }
+    .instruction-list-child{
+        margin-left: -0.75rem;
+    }
+    .instruction-checkbox {
+        margin-left: 0.75rem;
+    }
+
+    /* ````````````````````````` Exam page ````````````````````````````` */
+    /* ````````````````````````` Particular Test paper page ````````````````````````````` */
+    .test-paper-container-wrapper {
+        width: 96%;
+    }
+    .question-container {
+        padding: 0.5rem;
+        padding-bottom: 0;
+    }
+    .question-number {
+        width: 44px;
+        font-size: 14px;
+    }
+    .question {
+        width: calc(100% - 44px);
+    }
+    .question-text {
+        margin-bottom: 0.5rem;
+    }
+    .options {
+        margin-top: 0.5rem;
+    }
+    .options-in-a-row {
+        width: 100%;
+        flex-direction: column;
+        margin-bottom: 0rem;
+    }
+    .option {
+        margin-bottom: 0.5rem;
+        font-size: 14px;
+    }
+    .option-image {
+        margin-left: 0.3rem;
+        margin-top: 0.25rem;
+    }
+    .option p{
+        margin-left: 0.25rem;
+    }
+    .correct-option-container {
+        margin-bottom: 2px;
+        font-size: 12px;
+    }
+    hr {
+        margin-top: 0;
+    }
+    .remove-response {
+        margin-bottom: 2px;
+        font-size: 12px;
+    }
+
+    /* ````````````````````````` Exam Overview page ````````````````````````````` */
+    .progress-bar {
+        height: 30%;
+        margin: 0.75rem 0;
+    }
+    .outer-circle {
+        height: 140px;
+        width: 140px;
+    }
+    .inner-circle {
+        height: 100px;
+        width: 100px;
+    }
+    .marks-overview {
+        height: auto;
+    }
+    .marks {
+        height: 70px;
+        width: 100px;
+        margin: 0.5rem;
+    }
+}
+
+/*------------------------ meadia querry for 350px to 429px ----------------------*/
+@media only screen and (min-width: 350px) and (max-width: 430px) {
+    /* ````````````````````````` Test paper list page ````````````````````````````` */
+    .test-papers-list-container-wrapper {
+        width: 96%;
+    }
+    .test-papers-list-sub-heading {
+        width: 97%;
+    }
+    .sub-heading-test-name {
+        width: 30%;
+    }
+    .test-papers-list {
+        width: 96%;
+    }
+    .other {
+        font-size: 12px;
+    }
+
+    /* ````````````````````````` Instruction page ````````````````````````````` */
+    .instruction-container {
+        font-size: 14px;
+    }
+
+    /* ````````````````````````` Exam Overview page ````````````````````````````` */
+    .marks {
+        height: 75px;
+        width: 110px;
+    }
+}
+
+/*------------------------ meadia querry for 380px to 429px ----------------------*/
+@media only screen and (min-width: 380px) and (max-width: 430px) {
+    /* ````````````````````````` LoginOption page ````````````````````````````` */
+    .loginOption {
+        height: 240px;
+        width: 240px;
+    }
+
+    /* ````````````````````````` Login page ````````````````````````````` */
+    .login-container-wrapper {
+        height: 305px;
+    }
+    .signin-btn {
+        padding: 0.625rem 2.5rem;
+    }
+
+    /* ````````````````````````` Signup page ````````````````````````````` */
+    .signup-container-wrapper {
+        height: 585px;
+    }
+
+    /* ````````````````````````` Test paper list page ````````````````````````````` */
+    .test-papers-list-sub-heading {
+        width: 96%;
+        margin-top: 8px;
+    }
+    .sub-heading-test-name {
+        width: 35%;
+    }
+    .test-paper-row-delete {
+        font-size: 13px;
+    }
+    .other {
+        font-size: 13px;
+    }
+
+    /* ````````````````````````` Exam Overview page ````````````````````````````` */
+    .marks {
+        height: 82px;
+        width: 120px;
+    }
+}
+
+/*------------------------ meadia querry for 400px to 429px ----------------------*/
+@media only screen and (min-width: 400px) and (max-width: 430px) {
+    /* ````````````````````````` Test paper list page ````````````````````````````` */
+    .sub-heading-test-name {
+        width: 35%;
+    }
+
+    /* ````````````````````````` Exam page ````````````````````````````` */
+    /* ````````````````````````` Particular Test paper page ````````````````````````````` */
+    .question-number {
+        width: 50px;
+        font-size: 16px;
+    }
+    .question {
+        width: calc(100% - 50px);
+    }
+    .option {
+        font-size: 16px;
+    }
+    .correct-option-container {
+        font-size: 13px;
+    }
+    .remove-response {
+        font-size: 13px;
+    }
+
+    /* ````````````````````````` Instruction page ````````````````````````````` */
+    .instruction-container {
+        font-size: 15px;
+    }
+    .checkbox-label {
+        font-size: 13px;
+    }
+
+    /* ````````````````````````` Exam Overview page ````````````````````````````` */
+    .marks {
+        height: 85px;
+        width: 125px;
+    }
 }

@@ -284,6 +284,8 @@ const TestOverview = () => {
         }
     }, [physics, chemistry, botany, zoology])
 
+    const innerWidth = window.innerWidth<=430
+
     return (
         <>
             <Navbar/>
@@ -296,14 +298,25 @@ const TestOverview = () => {
                             <div className="outer-circle">
                                 <div className="inner-circle"> {percentage}% </div>
                             </div>
-                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                version="1.1"
+                                width={innerWidth ? '140px' : '160px'}
+                                height={innerWidth ? '140px' : '160px'}
+                            >
                                 <defs>
                                     <linearGradient id="GradientColor">
                                         <stop offset="0%" stop-color="#0d47a1" />
                                         <stop offset="100%" stop-color="rgb(192, 64, 0)" />
                                     </linearGradient>
                                 </defs>
-                                <circle className="progress" cx="80" cy="80" r="70" stroke-linecap="round" />
+                                <circle
+                                    className="progress"
+                                    cx={innerWidth ? '70' : '80'}
+                                    cy={innerWidth ? '70' : '80'}
+                                    r={innerWidth ? '60' : '70'}
+                                    stroke-linecap="round"
+                                />
                             </svg>
                         </div>
                         <div className="marks-overview">
@@ -312,6 +325,20 @@ const TestOverview = () => {
                                 {/* 12 need to be change to 180 later */}
                                 <div className="number">
                                     {physics?.attempted + chemistry?.attempted + botany?.attempted + zoology?.attempted}/12
+                                </div>
+                            </div>
+                            <div className="marks">
+                                <div className="label">Marks</div>
+                                <div className="number">
+                                    {
+                                        ((physics?.correct + chemistry?.correct + botany?.correct + zoology?.correct) * 4) -
+                                        (
+                                            (physics?.attempted + chemistry?.attempted + botany?.attempted + zoology?.attempted ) -
+                                            (physics?.correct + chemistry?.correct + botany?.correct + zoology?.correct)
+                                        )
+                                    } /
+                                    {/* 12 need to be change to 180 later */}
+                                    {12 * 4}
                                 </div>
                             </div>
                             <div className="marks">
@@ -327,20 +354,6 @@ const TestOverview = () => {
                                         (physics?.attempted + chemistry?.attempted + botany?.attempted + zoology?.attempted) -
                                         (physics?.correct + chemistry?.correct + botany?.correct + zoology?.correct)
                                     }
-                                </div>
-                            </div>
-                            <div className="marks">
-                                <div className="label">Marks</div>
-                                <div className="number">
-                                    {
-                                        ((physics?.correct + chemistry?.correct + botany?.correct + zoology?.correct) * 4) -
-                                        (
-                                            (physics?.attempted + chemistry?.attempted + botany?.attempted + zoology?.attempted ) -
-                                            (physics?.correct + chemistry?.correct + botany?.correct + zoology?.correct)
-                                        )
-                                    } /
-                                    {/* 12 need to be change to 180 later */}
-                                    {12 * 4}
                                 </div>
                             </div>
                         </div>

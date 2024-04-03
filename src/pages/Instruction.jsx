@@ -10,7 +10,7 @@ const Instruction = () => {
         <>
             <Navbar/>
             <div className="test-papers-list-container">
-                <div className="test-papers-list-container-wrapper">
+                <div className="test-papers-list-container-wrapper instruction-wrapper">
                     <h2 className="test-papers-list-heading paper-heading"> Instructions </h2>
                     <div className="test-papers-list-table instruction">
                         <div className="instruction-top">
@@ -22,10 +22,10 @@ const Instruction = () => {
                                 <li className="instruction-list">
                                     <strong>50</strong> questions in each subject are divided into <strong>two sections (A and B)</strong> as per details given below:
                                     <ul>
-                                        <li>
+                                        <li className="instruction-list-child">
                                             <strong>Section A</strong> shall consist of <strong>35 (Thirty-five)</strong> Questions in each subject (Question Nos. – 1 to 35, 51 to 85, 101 to 135 and 151 to 185). All Questions are compulsory.
                                         </li>
-                                        <li>
+                                        <li className="instruction-list-child">
                                             <strong>Section B</strong> shall consist of <strong>15 (Fifteen)</strong> questions in each subject (Question Nos. – 36 to 50, 86 to 100, 136 to 150 and 186 to 200). In section B, a candidate needs to <strong>attempt any 10 (Ten)</strong> questions out of <strong>15 (Fifteen)</strong> in each subject.
                                         </li>
                                     </ul>

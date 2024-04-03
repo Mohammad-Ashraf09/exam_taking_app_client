@@ -7,8 +7,8 @@ const TestPapersTable = ({ papers, deletePaperHandler, isAdmin}) => {
                 <p className="sub-heading sub-heading-test-name"> Test Name</p>
                 {isAdmin ? <p className="sub-heading"> Create Date </p> : null}
                 <p className="sub-heading"> Live Date </p>
-                {!isAdmin ? <p className="sub-heading"> Attempted Date </p> : null}
-                <p className="sub-heading"> No. of Questions </p>
+                {!isAdmin ? <p className="sub-heading"> Att. Date </p> : null}
+                <p className="sub-heading sub-heading-ques"> Questions </p>
                 <p className="sub-heading sub-heading-delete"></p>
             </div>
 

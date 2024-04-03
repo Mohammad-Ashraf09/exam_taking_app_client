@@ -34,10 +34,11 @@ export const util = {
         const date = dateObject.getDate()<10 ? '0'+dateObject.getDate() : dateObject.getDate();
         const month = dateObject.getMonth()+1<10 ? '0'+(dateObject.getMonth()+1) : dateObject.getMonth()+1;
         const year = dateObject.getFullYear();
-        const hr = dateObject.getHours()<10 ? '0'+dateObject.getHours() : dateObject.getHours();
-        const min = dateObject.getMinutes()<10 ? '0'+dateObject.getMinutes() : dateObject.getMinutes();
+        // const hr = dateObject.getHours()<10 ? '0'+dateObject.getHours() : dateObject.getHours();
+        // const min = dateObject.getMinutes()<10 ? '0'+dateObject.getMinutes() : dateObject.getMinutes();
 
-        const formattedDate = `${date}-${month}-${year} ${hr}:${min}`;
+        // const formattedDate = `${date}-${month}-${year} ${hr}:${min}`;
+        const formattedDate = `${date}-${month}-${year}`;
         return formattedDate;
     }
 }

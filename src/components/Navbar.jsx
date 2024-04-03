@@ -29,8 +29,7 @@ const Navbar = ({ isRunningTest, selectedOptions, submitExamHandler, timeAllotte
     <div className='navbar-container'>
         <div className="navbar-left">
             <img src='/logo-48.png' alt="" className="logo-img"/>
-            {/* <div className="logo-text">Dr<span style={{color: '#C04000'}}>Fiza</span></div> */}
-            <div className="logo-text">Hell<span style={{color: 'black'}}>o...</span></div>
+            <div className="logo-text-first">Dr<span className="logo-text-second">Fiza</span></div>
         </div>
 
         {user ?
@@ -43,7 +42,7 @@ const Navbar = ({ isRunningTest, selectedOptions, submitExamHandler, timeAllotte
                     </div>
                 ) : null}
 
-                {(!user?.isAdmin && isRunningTest) ? (
+                {isRunningTest ? (
                     <>
                         <div className="navbar-right-item">
                             <div className="nav timer">
@@ -76,7 +75,7 @@ const Navbar = ({ isRunningTest, selectedOptions, submitExamHandler, timeAllotte
                         </>
                     }
                 </div>
-                <div className="navbar-right-item nav logout" onClick={logoutHandler}> Logout </div>
+                {!isRunningTest ? <div className="navbar-right-item nav logout" onClick={logoutHandler}> Logout </div> : null}
             </div> :
         null}
     </div>

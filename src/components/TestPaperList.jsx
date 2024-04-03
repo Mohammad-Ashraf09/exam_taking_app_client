@@ -27,7 +27,7 @@ const TestPaperList = ({ paper, deletePaperHandler, isAdmin }) => {
                 {isAdmin ? <p className="sub-heading other">{createdDate}</p> : null}
                 <p className="sub-heading other">{liveDate}</p>
                 {!isAdmin ? <p className="sub-heading other">{attemptedDate}</p> : null}
-                <p className="sub-heading other" style={{color: '#0d47a1'}}>{totalQuestion}</p>
+                <p className="sub-heading other no-of-ques" style={{color: '#0d47a1'}}>{totalQuestion}</p>
             </Link>
             {isAdmin ? (
                 <i className="fa-solid fa-trash-can sub-heading sub-heading-delete" onClick={()=>deletePaperHandler(_id)}></i>
