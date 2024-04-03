@@ -16,8 +16,8 @@ const StudentViewDoneTestPaper = () => {
     useEffect(() => {    // 2 baar call ho rahi hai api
         const fetchLoggedInUser = async() => {
             try{
-                // await axios.get(`${REACT_APP_BASE_URL}/papers`);
-                const res = await axios.get(`http://localhost:8000/api/users/${user?._id}/user`);
+                const res = await axios.get(`https://exam-taking-app-backend.vercel.app/api/users/${user?._id}/user`);
+                // const res = await axios.get(`http://localhost:8000/api/users/${user?._id}/user`);
                 setResponses(res?.data?.attemptedPapers?.filter((item)=>item.paperId === paperId)?.[0]?.responses);
             }catch(err){
                 console.log(err);
@@ -29,8 +29,8 @@ const StudentViewDoneTestPaper = () => {
     useEffect(() => {     // 2 baar call ho rahi hai api
         const fetchPaper = async() => {
             try{
-                // await axios.get(`${REACT_APP_BASE_URL}/papers/${paperId}`);
-                const res = await axios.get(`http://localhost:8000/api/papers/${paperId}/paper`);
+                const res = await axios.get(`https://exam-taking-app-backend.vercel.app/api/papers/${paperId}/paper`);
+                // const res = await axios.get(`http://localhost:8000/api/papers/${paperId}/paper`);
                 setPaperTitle(res?.data?.paperTitle);
                 setQuestions(res?.data?.questions);
             }catch(err){

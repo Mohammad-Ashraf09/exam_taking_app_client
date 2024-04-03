@@ -4,6 +4,7 @@ import { find } from 'lodash';
 import { AuthContext } from "../context/AuthContext";
 import Navbar from "../components/Navbar";
 import TestPapersTable from '../components/TestPapersTable';
+// import { REACT_APP_BASE_URL } from '../config/keys';
 
 const StudentHome = () => {
     const { user } = useContext(AuthContext);
@@ -14,8 +15,8 @@ const StudentHome = () => {
     useEffect(() => {    // 2 baar call ho rahi hai api
         const fetchPapersList = async() => {
             try{
-                // await axios.get(`${REACT_APP_BASE_URL}/papers`);
-                const res = await axios.get("http://localhost:8000/api/papers/list");
+                const res = await axios.get(`https://exam-taking-app-backend.vercel.app/api/papers/list`);
+                // const res = await axios.get("http://localhost:8000/api/papers/list");
                 const livedPapers = res?.data?.filter((paper) => paper?.isLive);
                 setPapers(livedPapers);
             }catch(err){
@@ -28,8 +29,8 @@ const StudentHome = () => {
     useEffect(() => {    // 2 baar call ho rahi hai api
         const fetchLoggedInUser = async() => {
             try{
-                // await axios.get(`${REACT_APP_BASE_URL}/papers`);
-                const res = await axios.get(`http://localhost:8000/api/users/${user?._id}/user`);
+                const res = await axios.get(`https://exam-taking-app-backend.vercel.app/api/users/${user?._id}/user`);
+                // const res = await axios.get(`http://localhost:8000/api/users/${user?._id}/user`);
                 setUserData(res?.data);
             }catch(err){
                 console.log(err);

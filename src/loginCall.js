@@ -4,7 +4,8 @@ import axios from "axios";
 export const loginCall = async (userData, dispatch) =>{
     dispatch({ type: "LOGIN_START" });
     try{
-        const res = await axios.post(`http://localhost:8000/api/auth/login`, userData);
+        // const res = await axios.post(`http://localhost:8000/api/auth/login`, userData);
+        const res = await axios.post(`https://exam-taking-app-backend.vercel.app/api/auth/login`, userData);
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
     }
     catch(err){

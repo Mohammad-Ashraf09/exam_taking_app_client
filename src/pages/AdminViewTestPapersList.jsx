@@ -11,8 +11,8 @@ const AdminViewTestPapersList = () => {
         const isDelete = window.confirm('Are you sure...you want delete this paper');
         if (isDelete) {
             try{
-                // await axios.delete(`${REACT_APP_BASE_URL}/papers/${id}`);
-                await axios.delete(`http://localhost:8000/api/papers/${id}/delete`);
+                await axios.delete(`https://exam-taking-app-backend.vercel.app/api/papers/${id}/delete`);
+                // await axios.delete(`http://localhost:8000/api/papers/${id}/delete`);
                 setPapers((prev)=> prev.filter((item)=> item?._id !== id))
             }catch(err){
                 console.log(err);
@@ -23,9 +23,8 @@ const AdminViewTestPapersList = () => {
     useEffect(() => {    // 2 baar call ho rahi hai api
             const fetchPapersList = async() => {
                 try{
-                    // await axios.get(`${REACT_APP_BASE_URL}/papers`);
-                    const res = await axios.get("http://localhost:8000/api/papers/list");
-                    // console.log('data----', res?.data)
+                    const res = await axios.get("https://exam-taking-app-backend.vercel.app/api/papers/list");
+                    // const res = await axios.get("http://localhost:8000/api/papers/list");
                     setPapers(res?.data)
                 }catch(err){
                     console.log(err);

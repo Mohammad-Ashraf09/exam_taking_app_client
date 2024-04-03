@@ -30,8 +30,8 @@ const StudentViewRunningTestPaper = () => {
                 responses: selectedOptions,
             }
             try{
-                // await axios.put(`${REACT_APP_BASE_URL}/papers/${paperId}`);
-                await axios.put(`http://localhost:8000/api/users/${user?._id}/exam`, data);
+                await axios.put(`https://exam-taking-app-backend.vercel.app/api/users/${user?._id}/exam`, data);
+                // await axios.put(`http://localhost:8000/api/users/${user?._id}/exam`, data);
                 navigate(`/paper/${paperId}/thank-you`);
             }catch(err){
                 console.log(err);
@@ -42,8 +42,8 @@ const StudentViewRunningTestPaper = () => {
     useEffect(() => {     // 2 baar call ho rahi hai api
         const fetchPaper = async() => {
             try{
-                // await axios.get(`${REACT_APP_BASE_URL}/papers/${paperId}`);
-                const res = await axios.get(`http://localhost:8000/api/papers/${paperId}/paper`);
+                const res = await axios.get(`https://exam-taking-app-backend.vercel.app/api/papers/${paperId}/paper`);
+                // const res = await axios.get(`http://localhost:8000/api/papers/${paperId}/paper`);
                 setPaper(res?.data);
                 setSelectedOptions(Array(res?.data?.questions?.length).fill(''));
             }catch(err){

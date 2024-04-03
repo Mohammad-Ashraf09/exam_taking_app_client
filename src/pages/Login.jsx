@@ -37,7 +37,8 @@ const Login = ()=> {
 
     useEffect(()=>{
         const fetchAllUsers = async() => {
-            const res = await axios.get("http://localhost:8000/api/users");
+            const res = await axios.get("https://exam-taking-app-backend.vercel.app/api/users");
+            // const res = await axios.get("http://localhost:8000/api/users");
             const users = res?.data?.filter((user) => {
                 if (location?.pathname.includes('adminLogin')) {
                     return user?.isAdmin === true;
@@ -49,7 +50,7 @@ const Login = ()=> {
         }
         fetchAllUsers();
     }, []);
-    console.log('users---------',allUsers)
+    // console.log('users---------',allUsers)
 
     const loginText = location?.pathname.includes('adminLogin') ? 'Admin Login' : 'Student Login';
 

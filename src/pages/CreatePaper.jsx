@@ -139,8 +139,8 @@ const CreatePaper = () => {
             const savePaperToDB = async() => {
                 try{
                     console.log('on submit-------',finalData)
-                    // await axios.post(`${REACT_APP_BASE_URL}/papers/create`, finalData);
-                    await axios.post("http://localhost:8000/api/papers/create", finalData);
+                    await axios.post(`https://exam-taking-app-backend.vercel.app/api/papers/create`, finalData);
+                    // await axios.post("http://localhost:8000/api/papers/create", finalData);
                     navigate("/");
                 }catch(err){
                     console.log(err);

@@ -135,8 +135,8 @@ const Signup = () => {
             }
             const saveDetailsToDB = async() => {
                 try{
-                    // await axios.post(`${REACT_APP_BASE_URL}/auth/register`, formValue);
-                    await axios.post("http://localhost:8000/api/auth/register", formValue);
+                    await axios.post(`https://exam-taking-app-backend.vercel.app/api/auth/register`, formValue);
+                    // await axios.post("http://localhost:8000/api/auth/register", formValue);
                     setIsLoader(false);
                     setHideSaveBtn(false);
                     navigate(location?.pathname.includes('adminSignup') ? "/adminLogin" : "/studentLogin");

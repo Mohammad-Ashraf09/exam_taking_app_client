@@ -19,8 +19,8 @@ const AdminViewParticularTestPaper = () => {
                 liveAt: Date.now(),
             }
             try{
-                // await axios.put(`${REACT_APP_BASE_URL}/papers/${paperId}`);
-                await axios.put(`http://localhost:8000/api/papers/${paperId}/live`, data);
+                await axios.put(`https://exam-taking-app-backend.vercel.app/api/papers/${paperId}/live`, data);
+                // await axios.put(`http://localhost:8000/api/papers/${paperId}/live`, data);
                 setIsLive(!isLive);
             }catch(err){
                 console.log(err);
@@ -31,8 +31,8 @@ const AdminViewParticularTestPaper = () => {
     useEffect(() => {     // 2 baar call ho rahi hai api
         const fetchPaper = async() => {
             try{
-                // await axios.get(`${REACT_APP_BASE_URL}/papers/${paperId}`);
-                const res = await axios.get(`http://localhost:8000/api/papers/${paperId}/paper`);
+                const res = await axios.get(`https://exam-taking-app-backend.vercel.app/api/papers/${paperId}/paper`);
+                // const res = await axios.get(`http://localhost:8000/api/papers/${paperId}/paper`);
                 setPaper(res?.data);
                 setIsLive(res?.data?.isLive);
             }catch(err){
