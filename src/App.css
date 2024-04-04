@@ -779,7 +779,6 @@ input:invalid[focused="true"] ~ .error-msg{
 }
 .question-text {
     margin-bottom: 1rem;
-    font-family: 'Times New Roman', Times, serif;
 }
 .question-image {
     max-width:100%;
