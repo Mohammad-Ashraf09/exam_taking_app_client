@@ -1183,6 +1183,7 @@ circle {
     .option {
         margin-bottom: 0.5rem;
         font-size: 14px;
+        width: 100%;
     }
     .option-image {
         margin-left: 0.3rem;
