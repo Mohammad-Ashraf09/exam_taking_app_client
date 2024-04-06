@@ -11,6 +11,7 @@ const StudentViewDoneTestPaper = () => {
     const { user } = useContext(AuthContext);
     const [paperTitle, setPaperTitle] = useState('');
     const [questions, setQuestions] = useState([]);
+    const [updatedQuestions, setUpdatedQuestions] = useState([]);
     const [responses, setResponses] = useState([]);
 
     useEffect(() => {    // 2 baar call ho rahi hai api
@@ -48,9 +49,9 @@ const StudentViewDoneTestPaper = () => {
                     response: responses[i]
                 }
             })
-            setQuestions(data);
+            setUpdatedQuestions(data);
         }
-    }, [questions?.length, responses]);
+    }, [questions?.length]);
 
     return (
         <>
@@ -60,7 +61,7 @@ const StudentViewDoneTestPaper = () => {
                     <h2 className="test-papers-list-heading paper-heading"> {paperTitle} </h2>
 
                     <div className="test-papers-list-table questions-div">
-                        {questions?.map((q)=>(
+                        {updatedQuestions?.map((q)=>(
                             <div key={q?.questionNo} style={{width: '100%'}}>
                                 <div className="question-container">
                                     <div className="question-number"> Q.{q?.questionNo}</div>

@@ -29,7 +29,7 @@ const Navbar = ({ isRunningTest, selectedOptions, submitExamHandler, timeAllotte
     <div className='navbar-container'>
         <div className="navbar-left">
             <img src='/logo-48.png' alt="" className="logo-img"/>
-            <div className="logo-text-first">Dr<span className="logo-text-second">Fiza</span></div>
+            <div className="logo-text-first">Mock<span className="logo-text-second">Neet</span></div>
         </div>
 
         {user ?

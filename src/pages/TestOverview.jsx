@@ -41,7 +41,7 @@ const TestOverview = () => {
         fetchPaper();
     }, []);
 
-    useEffect(() => {
+    useEffect(() => {    // for progress bar
         const progress = document.querySelector('.progress');
         let offset = 472;
         let interval = setInterval(() => {
@@ -84,195 +84,259 @@ const TestOverview = () => {
             }
             progress.style.strokeDashoffset = offset--;
         }, 0);
-    }, [percentage]);  // for progress bar
+    }, [percentage]);
 
-    useEffect(() => {
+    useEffect(() => {    // main logic of all calculations
         if (
             correctOptions?.length &&
             responses?.length &&
             correctOptions?.length === responses?.length
         ) {
-            // for attempted count
-            const phy = {
-                mandatory: responses.slice(0, 2),  // this need to be change 0 to 35 later
-                optional: responses.slice(2, 4),   // this need to be change 35 to 50 later
-            };
-            const chem = {
-                mandatory: responses.slice(4, 6),
-                optional: responses.slice(6, 8)
-            };
-            const bot = {
-                mandatory: responses.slice(8, 10),
-                optional: responses.slice(10, 12)
-            };
-            const zoo = {
-                mandatory: responses.slice(12, 14),
-                optional: responses.slice(14, 16)
-            };
-
-            let mandatoryCount = 0;
-            let optionalCount = 0;
-            let totalCount = 0;
-
-            phy.mandatory.map((res) => {
-                if (res) mandatoryCount++;
-            })
-            phy.optional.map((res) => {
-                if (res) optionalCount++;
-            })
-            totalCount = totalCount + mandatoryCount;
-            if (optionalCount > 1) {                   // 1 need to be change to 10 later
-                totalCount = totalCount + 1;           // 1 need to be change to 10 later
-            } else {
-                totalCount = totalCount + optionalCount;
-            }
-            setPhysics({attempted: totalCount});
-            mandatoryCount = 0;
-            optionalCount = 0;
-            totalCount = 0;
-
-            chem.mandatory.map((res) => {
-                if (res) mandatoryCount++;
-            })
-            chem.optional.map((res) => {
-                if (res) optionalCount++;
-            })
-            totalCount = totalCount + mandatoryCount;
-            if (optionalCount > 1) {
-                totalCount = totalCount + 1;
-            } else {
-                totalCount = totalCount + optionalCount;
-            }
-            setChemistry({attempted: totalCount});
-            mandatoryCount = 0;
-            optionalCount = 0;
-            totalCount = 0;
-
-            bot.mandatory.map((res) => {
-                if (res) mandatoryCount++;
-            })
-            bot.optional.map((res) => {
-                if (res) optionalCount++;
-            })
-            totalCount = totalCount + mandatoryCount;
-            if (optionalCount > 1) {
-                totalCount = totalCount + 1;
-            } else {
-                totalCount = totalCount + optionalCount;
-            }
-            setBotany({attempted: totalCount});
-            mandatoryCount = 0;
-            optionalCount = 0;
-            totalCount = 0;
-
-            zoo.mandatory.map((res) => {
-                if (res) mandatoryCount++;
-            })
-            zoo.optional.map((res) => {
-                if (res) optionalCount++;
-            })
-            totalCount = totalCount + mandatoryCount;
-            if (optionalCount > 1) {
-                totalCount = totalCount + 1;
-            } else {
-                totalCount = totalCount + optionalCount;
-            }
-            setZoology({attempted: totalCount});
-            mandatoryCount = 0;
-            optionalCount = 0;
-            totalCount = 0;
-
-            // for correct count
-            const phyCorr = {
-                mandatory: correctOptions.slice(0, 2),  // this need to be change 0 to 35 later
-                optional: correctOptions.slice(2, 4),   // this need to be change 35 to 50 later
-            };
-            const chemCorr = {
-                mandatory: correctOptions.slice(4, 6),
-                optional: correctOptions.slice(6, 8)
-            };
-            const botCorr = {
-                mandatory: correctOptions.slice(8, 10),
-                optional: correctOptions.slice(10, 12)
-            };
-            const zooCorr = {
-                mandatory: correctOptions.slice(12, 14),
-                optional: correctOptions.slice(14, 16)
-            };
-
-            let attempted = 0;
-            phy.mandatory.map((res, i) => {
-                if (res === phyCorr.mandatory[i]) mandatoryCount++;
-            })
-            phy.optional.map((res, i) => {
-                if (res) {
-                    attempted++; 
-                    if (attempted <= 1 && res === phyCorr.optional[i]) {  // 1 need to be change to 10 later
-                        optionalCount++;
-                    }
+            if (correctOptions?.length === 200) {
+                // for attempted count
+                const phy = {
+                    mandatory: responses.slice(0, 35),
+                    optional: responses.slice(35, 50),
+                };
+                const chem = {
+                    mandatory: responses.slice(50, 85),
+                    optional: responses.slice(85, 100)
+                };
+                const bot = {
+                    mandatory: responses.slice(100, 135),
+                    optional: responses.slice(135, 150)
+                };
+                const zoo = {
+                    mandatory: responses.slice(150, 185),
+                    optional: responses.slice(185, 200)
+                };
+    
+                let mandatoryCount = 0;
+                let optionalCount = 0;
+                let totalCount = 0;
+    
+                phy.mandatory.map((res) => {
+                    if (res) mandatoryCount++;
+                })
+                phy.optional.map((res) => {
+                    if (res) optionalCount++;
+                })
+                totalCount = totalCount + mandatoryCount;
+                if (optionalCount > 10) {
+                    totalCount = totalCount + 10;
+                } else {
+                    totalCount = totalCount + optionalCount;
                 }
-            })
-            const a = mandatoryCount + optionalCount;
-            setPhysics((prev) => ({...prev, correct: a}));
-            mandatoryCount = 0;
-            optionalCount = 0;
-            attempted = 0;
-
-            chem.mandatory.map((res, i) => {
-                if (res === chemCorr.mandatory[i]) mandatoryCount++;
-            })
-            chem.optional.map((res, i) => {
-                if (res) {
-                    attempted++; 
-                    if (attempted <= 1 && res === chemCorr.optional[i]) {  // 1 need to be change to 10 later
-                        optionalCount++;
-                    }
+                setPhysics({attempted: totalCount});
+                mandatoryCount = 0;
+                optionalCount = 0;
+                totalCount = 0;
+    
+                chem.mandatory.map((res) => {
+                    if (res) mandatoryCount++;
+                })
+                chem.optional.map((res) => {
+                    if (res) optionalCount++;
+                })
+                totalCount = totalCount + mandatoryCount;
+                if (optionalCount > 10) {
+                    totalCount = totalCount + 10;
+                } else {
+                    totalCount = totalCount + optionalCount;
                 }
-            })
-            const b = mandatoryCount + optionalCount;
-            setChemistry((prev) => ({...prev, correct: b}));
-            mandatoryCount = 0;
-            optionalCount = 0;
-            attempted = 0;
-
-            bot.mandatory.map((res, i) => {
-                if (res === botCorr.mandatory[i]) mandatoryCount++;
-            })
-            bot.optional.map((res, i) => {
-                if (res) {
-                    attempted++; 
-                    if (attempted <= 1 && res === botCorr.optional[i]) {  // 1 need to be change to 10 later
-                        optionalCount++;
-                    }
+                setChemistry({attempted: totalCount});
+                mandatoryCount = 0;
+                optionalCount = 0;
+                totalCount = 0;
+    
+                bot.mandatory.map((res) => {
+                    if (res) mandatoryCount++;
+                })
+                bot.optional.map((res) => {
+                    if (res) optionalCount++;
+                })
+                totalCount = totalCount + mandatoryCount;
+                if (optionalCount > 10) {
+                    totalCount = totalCount + 10;
+                } else {
+                    totalCount = totalCount + optionalCount;
                 }
-            })
-            const c = mandatoryCount + optionalCount;
-            setBotany((prev) => ({...prev, correct: c}));
-            mandatoryCount = 0;
-            optionalCount = 0;
-            attempted = 0
-
-            zoo.mandatory.map((res, i) => {
-                if (res === zooCorr.mandatory[i]) mandatoryCount++;
-            })
-            
-            zoo.optional.map((res, i) => {
-                if (res) {
-                    attempted++; 
-                    if (attempted <= 1 && res === zooCorr.optional[i]) {  // 1 need to be change to 10 later
-                        optionalCount++;
-                    }
+                setBotany({attempted: totalCount});
+                mandatoryCount = 0;
+                optionalCount = 0;
+                totalCount = 0;
+    
+                zoo.mandatory.map((res) => {
+                    if (res) mandatoryCount++;
+                })
+                zoo.optional.map((res) => {
+                    if (res) optionalCount++;
+                })
+                totalCount = totalCount + mandatoryCount;
+                if (optionalCount > 10) {
+                    totalCount = totalCount + 10;
+                } else {
+                    totalCount = totalCount + optionalCount;
                 }
-            })
-            const d = mandatoryCount + optionalCount;
-            setZoology((prev) => ({...prev, correct: d}));
-            mandatoryCount = 0;
-            optionalCount = 0;
-            attempted = 0
+                setZoology({attempted: totalCount});
+                mandatoryCount = 0;
+                optionalCount = 0;
+                totalCount = 0;
+    
+                // for correct count
+                const phyCorr = {
+                    mandatory: correctOptions.slice(0, 35),
+                    optional: correctOptions.slice(35, 50),
+                };
+                const chemCorr = {
+                    mandatory: correctOptions.slice(50, 85),
+                    optional: correctOptions.slice(85, 100)
+                };
+                const botCorr = {
+                    mandatory: correctOptions.slice(100, 135),
+                    optional: correctOptions.slice(135, 150)
+                };
+                const zooCorr = {
+                    mandatory: correctOptions.slice(150, 185),
+                    optional: correctOptions.slice(185, 200)
+                };
+    
+                let attempted = 0;
+                phy.mandatory.map((res, i) => {
+                    if (res === phyCorr.mandatory[i]) mandatoryCount++;
+                })
+                phy.optional.map((res, i) => {
+                    if (res) {
+                        attempted++; 
+                        if (attempted <= 10 && res === phyCorr.optional[i]) {
+                            optionalCount++;
+                        }
+                    }
+                })
+                const a = mandatoryCount + optionalCount;
+                setPhysics((prev) => ({...prev, correct: a}));
+                mandatoryCount = 0;
+                optionalCount = 0;
+                attempted = 0;
+    
+                chem.mandatory.map((res, i) => {
+                    if (res === chemCorr.mandatory[i]) mandatoryCount++;
+                })
+                chem.optional.map((res, i) => {
+                    if (res) {
+                        attempted++; 
+                        if (attempted <= 10 && res === chemCorr.optional[i]) {
+                            optionalCount++;
+                        }
+                    }
+                })
+                const b = mandatoryCount + optionalCount;
+                setChemistry((prev) => ({...prev, correct: b}));
+                mandatoryCount = 0;
+                optionalCount = 0;
+                attempted = 0;
+    
+                bot.mandatory.map((res, i) => {
+                    if (res === botCorr.mandatory[i]) mandatoryCount++;
+                })
+                bot.optional.map((res, i) => {
+                    if (res) {
+                        attempted++; 
+                        if (attempted <= 10 && res === botCorr.optional[i]) {
+                            optionalCount++;
+                        }
+                    }
+                })
+                const c = mandatoryCount + optionalCount;
+                setBotany((prev) => ({...prev, correct: c}));
+                mandatoryCount = 0;
+                optionalCount = 0;
+                attempted = 0
+    
+                zoo.mandatory.map((res, i) => {
+                    if (res === zooCorr.mandatory[i]) mandatoryCount++;
+                })
+                
+                zoo.optional.map((res, i) => {
+                    if (res) {
+                        attempted++; 
+                        if (attempted <= 10 && res === zooCorr.optional[i]) {
+                            optionalCount++;
+                        }
+                    }
+                })
+                const d = mandatoryCount + optionalCount;
+                setZoology((prev) => ({...prev, correct: d}));
+                mandatoryCount = 0;
+                optionalCount = 0;
+                attempted = 0
+            } else {
+                // for attempted count
+                const phy = responses.slice(0, (responses?.length / 4)*1)
+                const chem = responses.slice((responses?.length / 4)*1, (responses?.length / 4)*2)
+                const bot = responses.slice((responses?.length / 4)*2, (responses?.length / 4)*3)
+                const zoo = responses.slice((responses?.length / 4)*3, responses?.length)
+    
+                let attempted = 0;
+    
+                phy.map((res) => {
+                    if (res) attempted++;
+                })
+                setPhysics({attempted: attempted});
+                attempted = 0;
+
+                chem.map((res) => {
+                    if (res) attempted++;
+                })
+                setChemistry({attempted: attempted});
+                attempted = 0;
+
+                bot.map((res) => {
+                    if (res) attempted++;
+                })
+                setBotany({attempted: attempted});
+                attempted = 0;
+
+                zoo.map((res) => {
+                    if (res) attempted++;
+                })
+                setZoology({attempted: attempted});
+                attempted = 0;
+
+                // for correct count
+                const phyCorr = correctOptions.slice(0, (responses?.length / 4)*1)
+                const chemCorr = correctOptions.slice((responses?.length / 4)*1, (responses?.length / 4)*2)
+                const botCorr = correctOptions.slice((responses?.length / 4)*2, (responses?.length / 4)*3)
+                const zooCorr = correctOptions.slice((responses?.length / 4)*3, responses?.length)
+    
+                let phyCorrect = 0;
+                phy.map((res, i) => {
+                    if (res === phyCorr[i]) phyCorrect++;
+                })
+                setPhysics((prev) => ({...prev, correct: phyCorrect}));
+
+                let chemCorrect = 0;
+                chem.map((res, i) => {
+                    if (res === chemCorr[i]) chemCorrect++;
+                })
+                setChemistry((prev) => ({...prev, correct: chemCorrect}));
+
+                let botCorrect = 0;
+                bot.map((res, i) => {
+                    if (res === botCorr[i]) botCorrect++;
+                })
+                setBotany((prev) => ({...prev, correct: botCorrect}));
+
+                let zooCorrect = 0;
+                zoo.map((res, i) => {
+                    if (res === zooCorr[i]) zooCorrect++;
+                })
+                setZoology((prev) => ({...prev, correct: zooCorrect}));
+            }
         }
     }, [correctOptions, responses]);
 
-    useEffect(() => {
+    useEffect(() => {     // for setting percentage
         if (physics && chemistry && botany && zoology) {
             const marks =
             ((physics?.correct + chemistry?.correct + botany?.correct + zoology?.correct) * 4) -
@@ -280,7 +344,11 @@ const TestOverview = () => {
                 (physics?.attempted + chemistry?.attempted + botany?.attempted + zoology?.attempted ) -
                 (physics?.correct + chemistry?.correct + botany?.correct + zoology?.correct)
             )
-            setPercentage(Math.round((marks/48) * 100))
+            setPercentage(Math.round(
+                (marks / (
+                    correctOptions?.length === 200 ? 180 * 4 : correctOptions?.length * 4     // this completely change to 720 hardcoded later
+                )) * 100
+            ));
         }
     }, [physics, chemistry, botany, zoology])
 
@@ -322,9 +390,11 @@ const TestOverview = () => {
                         <div className="marks-overview">
                             <div className="marks">
                                 <div className="label">Attempts</div>
-                                {/* 12 need to be change to 180 later */}
                                 <div className="number">
-                                    {physics?.attempted + chemistry?.attempted + botany?.attempted + zoology?.attempted}/12
+                                    {physics?.attempted + chemistry?.attempted + botany?.attempted + zoology?.attempted}
+                                    /
+                                    {/* this completely change to 180 hardcoded later */}
+                                    {correctOptions?.length === 200 ? 180 : correctOptions?.length}
                                 </div>
                             </div>
                             <div className="marks">
@@ -337,8 +407,8 @@ const TestOverview = () => {
                                             (physics?.correct + chemistry?.correct + botany?.correct + zoology?.correct)
                                         )
                                     } /
-                                    {/* 12 need to be change to 180 later */}
-                                    {12 * 4}
+                                    {/* this completely change to 720 hardcoded later */}
+                                    {correctOptions?.length === 200 ? 180 * 4 : correctOptions?.length * 4}
                                 </div>
                             </div>
                             <div className="marks">
