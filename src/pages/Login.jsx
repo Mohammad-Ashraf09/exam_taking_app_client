@@ -50,7 +50,6 @@ const Login = ()=> {
         }
         fetchAllUsers();
     }, []);
-    // console.log('users---------',allUsers)
 
     const loginText = location?.pathname.includes('adminLogin') ? 'Admin Login' : 'Student Login';
 
@@ -90,12 +89,14 @@ const Login = ()=> {
                     </div>
                 
                     <button className='signin-btn'>Login</button>
-                    <Link
-                        to={`${location?.pathname.includes('adminLogin') ? '/adminSignup' : '/studentSignup'}`}
-                        style={{textDecoration: 'none'}}
-                    >
-                        <p className='signup-text'>don't have account?</p>
-                    </Link>
+                    {location?.pathname.includes('studentLogin') ? (
+                        <Link
+                            to={`${location?.pathname.includes('adminLogin') ? '/adminSignup' : '/studentSignup'}`}
+                            style={{textDecoration: 'none'}}
+                        >
+                            <p className='signup-text'>don't have account?</p>
+                        </Link>
+                    ) : null}
                 </form>
             </div>
         </>

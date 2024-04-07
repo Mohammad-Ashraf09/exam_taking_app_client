@@ -28,7 +28,7 @@ function App() {
             <Routes>
                 <Route path='/' element={user ? (user?.isAdmin ? <AdminHome/> : <StudentHome/>) : <LoginOption/> }/>
                 <Route path='/studentSignup' element={ user ? <Navigate to="/" /> : <Signup/>}/>
-                <Route path='/adminSignup' element={ user ? <Navigate to="/" /> : <Signup/>}/>
+                {/* <Route path='/adminSignup' element={ user ? <Navigate to="/" /> : <Signup/>}/> */}
                 <Route path='/studentLogin' element={ user ? <Navigate to="/" /> : <Login/>}/>
                 <Route path='/adminLogin' element={ user ? <Navigate to="/" /> : <Login/>}/>
                 <Route path='/adminProfile/:id' element={user?.isAdmin ? <AdminProfile/> : <Navigate to="/" />}/>
