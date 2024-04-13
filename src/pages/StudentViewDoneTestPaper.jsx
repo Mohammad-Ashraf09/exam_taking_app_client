@@ -66,7 +66,7 @@ const StudentViewDoneTestPaper = () => {
                                 <div className="question-container">
                                     <div className="question-number"> Q.{q?.questionNo}</div>
                                     <div className="question">
-                                        <div className="question-text"><Markdown>{q?.question?.text}</Markdown></div>
+                                        {q?.question?.text ? <div className="question-text"><Markdown>{q?.question?.text}</Markdown></div> : null}
                                         {q?.question?.image ? <img src={q?.question?.image} className="question-image"></img> : null}
                                         <CorrectedOptionsWithResponse
                                             option={q?.option}
