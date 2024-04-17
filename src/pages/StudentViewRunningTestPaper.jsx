@@ -17,12 +17,14 @@ const StudentViewRunningTestPaper = () => {
         const newSelectedOptions = [...selectedOptions];
         newSelectedOptions[index] = event==='remove' ? '' : event.target.value;
         setSelectedOptions(newSelectedOptions);
+        sessionStorage.setItem('responses', JSON.stringify(newSelectedOptions));
     };
 
     const submitExamHandler = async(isTimesUp) => {
         const isSubmit = !isTimesUp ? window.confirm('Are you sure, you want to Submit Exam') : true;
 
         if (isSubmit) {
+            sessionStorage.removeItem('responses');
             const data = {
                 userId: user?._id,
                 paperId,
@@ -33,6 +35,7 @@ const StudentViewRunningTestPaper = () => {
                 await axios.put(`https://exam-taking-app-backend.vercel.app/api/users/${user?._id}/exam`, data);
                 // await axios.put(`http://localhost:8000/api/users/${user?._id}/exam`, data);
                 navigate(`/paper/${paperId}/thank-you`);
+                sessionStorage.removeItem('timeLeft');
             }catch(err){
                 console.log(err);
             }
@@ -45,7 +48,12 @@ const StudentViewRunningTestPaper = () => {
                 const res = await axios.get(`https://exam-taking-app-backend.vercel.app/api/papers/${paperId}/paper`);
                 // const res = await axios.get(`http://localhost:8000/api/papers/${paperId}/paper`);
                 setPaper(res?.data);
-                setSelectedOptions(Array(res?.data?.questions?.length).fill(''));
+                const responses = JSON.parse(sessionStorage.getItem('responses'));
+                if (responses?.length) {
+                    setSelectedOptions(responses);
+                } else {
+                    setSelectedOptions(Array(res?.data?.questions?.length).fill(''));
+                }
             }catch(err){
                 console.log(err);
             }

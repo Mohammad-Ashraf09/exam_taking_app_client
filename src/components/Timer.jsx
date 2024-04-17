@@ -5,7 +5,10 @@ const Timer = ({ submitExamHandler, timeAllotted }) => {
     const [isCallSubmitHandler, setIsCallSubmitHandler] = useState(false);
 
     useEffect(() => {
-        if (timeAllotted) {
+        const timeLeft = sessionStorage.getItem('timeLeft');
+        if (+timeLeft) {
+            setSeconds(+timeLeft);
+        } else {
             setSeconds(timeAllotted);
         }
     }, [timeAllotted]);
@@ -18,6 +21,7 @@ const Timer = ({ submitExamHandler, timeAllotted }) => {
                     // submitExamHandler(true);         // call happening from here also but not in proper way
                     clearInterval(interval);
                 }
+                sessionStorage.setItem('timeLeft', prevSeconds);
                 return prevSeconds - 1;
             });
         }, 1000);
